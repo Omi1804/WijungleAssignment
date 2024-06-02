@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 
 const TimeSeriesGraph = ({ data }) => {
@@ -54,11 +54,15 @@ const TimeSeriesGraph = ({ data }) => {
     // Define the line
     const valueline = d3
       .line()
+      // @ts-ignore
       .x((d) => x(new Date(d.timestamp)))
+      // @ts-ignore
       .y((d) => y(d.alerts));
 
     // Scale the range of the data
+    // @ts-ignore
     x.domain(d3.extent(data, (d) => new Date(d.timestamp)));
+    // @ts-ignore
     y.domain([0, d3.max(data, (d) => d.alerts)]);
 
     // Format the x-axis to display time

@@ -10,7 +10,7 @@ import { data } from "./data";
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
 
-  const [timedata, setTimedata] = useState(processData(data));
+  const timedata = processData(data);
 
   const toggleDarkMode = () => {
     setDarkMode((prev) => !prev);
@@ -48,6 +48,7 @@ const processData = (rawData) => {
 
   // Convert the object into an array of objects
   return Object.values(groupedData).sort(
+    // @ts-ignore
     (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
   ); // Ensure data is sorted by time
 };

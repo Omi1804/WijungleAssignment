@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import * as d3 from "d3";
 
 const Graph = ({ rawData }) => {
@@ -37,10 +37,12 @@ const Graph = ({ rawData }) => {
     const groupByProto = d3.rollups(
       rawData,
       (v) => v.length,
+      // @ts-ignore
       (d) => d.proto
     );
     const arcs = g
       .selectAll(".arc")
+      // @ts-ignore
       .data(pie(groupByProto))
       .enter()
       .append("g")
@@ -48,12 +50,14 @@ const Graph = ({ rawData }) => {
 
     arcs
       .append("path")
+      // @ts-ignore
       .attr("d", path)
+      // @ts-ignore
       .attr("fill", (d) => color(d.data[0]))
-      .on("mouseover", function (event, d) {
+      .on("mouseover", function () {
         d3.select(this).transition().duration(200).attr("d", hoverPath);
       })
-      .on("mouseout", function (event, d) {
+      .on("mouseout", function () {
         d3.select(this).transition().duration(200).attr("d", path);
       });
 
@@ -67,6 +71,7 @@ const Graph = ({ rawData }) => {
         .attr("y", index * 30)
         .attr("width", 50)
         .attr("height", 22)
+        // @ts-ignore
         .attr("fill", color(proto));
 
       legend

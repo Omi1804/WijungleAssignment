@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
 const Histogram = ({ rawData }) => {
@@ -65,6 +65,7 @@ const Histogram = ({ rawData }) => {
     const x = d3
       .scaleBand()
       .range([0, width])
+      // @ts-ignore
       .domain(dataGrouped.map((d) => d.category))
       .padding(0.2);
 
@@ -74,6 +75,7 @@ const Histogram = ({ rawData }) => {
       .range([height, 0]);
 
     // X-axis
+    // @ts-ignore
     const xAxis = svg
       .append("g")
       .attr("transform", `translate(0,${height})`)
@@ -105,22 +107,25 @@ const Histogram = ({ rawData }) => {
       .enter()
       .append("rect")
       .attr("class", "bar")
+      // @ts-ignore
       .attr("x", (d) => x(d.category))
       .attr("y", (d) => y(d.count))
       .attr("width", x.bandwidth())
       .attr("height", (d) => height - y(d.count))
       .attr("fill", "#69b3a2")
+      // @ts-ignore
       .on("mouseover", function (event, d) {
         d3.select(this).attr("fill", "orange");
         svg
           .append("text")
           .attr("class", "val")
+          // @ts-ignore
           .attr("x", x(d.category) + x.bandwidth() / 2)
           .attr("y", y(d.count) - 5)
           .text(d.count)
           .attr("text-anchor", "middle");
       })
-      .on("mouseout", function (event, d) {
+      .on("mouseout", function () {
         d3.select(this).attr("fill", "#69b3a2");
         svg.selectAll(".val").remove();
       });

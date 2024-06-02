@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
 const BarChart = ({ rawData }) => {
   const ref = useRef();
+  // @ts-ignore
   const [dimensions, setDimensions] = useState({ width: 500, height: 300 });
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const BarChart = ({ rawData }) => {
       .rollups(
         rawData,
         (group) => group.length,
+        // @ts-ignore
         (d) => (d.alert && d.alert.severity ? d.alert.severity : "Unknown")
       )
       .sort((a, b) => d3.ascending(a[0], b[0]));
@@ -51,8 +53,9 @@ const BarChart = ({ rawData }) => {
       .attr("y", (d) => y(d[1]))
       .attr("width", x.bandwidth())
       .attr("height", (d) => y(0) - y(d[1]))
+      // @ts-ignore
       .attr("fill", (d) => color(d[0]))
-      .on("mouseover", function (event, d) {
+      .on("mouseover", function () {
         d3.select(this)
           .transition()
           .duration(200)
@@ -60,7 +63,7 @@ const BarChart = ({ rawData }) => {
           .attr("y", (d) => y(d[1]) - 10) // Move up slightly
           .attr("height", (d) => y(0) - y(d[1]) + 10); // Increase height slightly
       })
-      .on("mouseout", function (event, d) {
+      .on("mouseout", function () {
         d3.select(this)
           .transition()
           .duration(200)
@@ -109,6 +112,7 @@ const BarChart = ({ rawData }) => {
         .attr("y", i * 30)
         .attr("width", 20)
         .attr("height", 20)
+        // @ts-ignore
         .attr("fill", color(d[0]));
 
       legend
