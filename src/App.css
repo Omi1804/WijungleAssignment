@@ -10,6 +10,10 @@ body {
   overscroll-behavior: none;
 }
 
+.appBody.dark {
+  background-color: #242729;
+}
+
 li {
   list-style: none;
   color: inherit;

@@ -7,7 +7,7 @@ interface NavbarItems {
 
 const Navbar = ({ darkMode, toggleDarkMode }: NavbarItems) => {
   return (
-    <div className="navbar">
+    <div className={`navbar ${darkMode ? "dark" : ""}`}>
       <div className="sec1">
         <div className="menuIcon">
           <span className="material-symbols-outlined">menu</span>

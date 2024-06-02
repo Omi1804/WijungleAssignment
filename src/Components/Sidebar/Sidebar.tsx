@@ -1,8 +1,8 @@
 import "./sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ darkMode }) => {
   return (
-    <div className="sideBar">
+    <div className={`sideBar ${darkMode ? "dark" : ""}`}>
       <div className="companyLogo">
         <span className="material-symbols-outlined">diamond</span>
         <p>Company</p>

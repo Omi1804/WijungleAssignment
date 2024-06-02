@@ -6,6 +6,7 @@
   background-color: #1a233a;
   color: white;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s linear;
 
   .companyLogo {
     display: flex;
@@ -75,6 +76,19 @@
           color: #e0e6f7;
         }
       }
+    }
+  }
+}
+
+.sideBar.dark {
+  background-color: #1a1c1e;
+
+  .companyLogo {
+    background-color: #252829;
+  }
+  .navLinks {
+    .link {
+      background-color: #252829;
     }
   }
 }

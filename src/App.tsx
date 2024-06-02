@@ -19,13 +19,15 @@ const App = () => {
   console.log(timedata);
 
   return (
-    <BrowserRouter>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Sidebar />
-      <Routes>
-        <Route path="/" element={<Home timedata={timedata} />} />
-      </Routes>
-    </BrowserRouter>
+    <div className={`appBody ${darkMode ? "dark" : ""}`}>
+      <BrowserRouter>
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Sidebar darkMode={darkMode} />
+        <Routes>
+          <Route path="/" element={<Home timedata={timedata} />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 
