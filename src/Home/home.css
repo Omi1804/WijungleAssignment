@@ -1,0 +1,56 @@
+.homePage {
+  min-height: 92vh;
+  margin-left: 15rem;
+  padding: 1rem 2rem;
+
+  .graphs {
+    background-color: white;
+    box-shadow: 0 0.125rem 0 hsla(0, 0%, 4%, 0.04);
+    border-radius: 10px;
+    text-align: center;
+    margin-block: 1rem;
+
+    > h2 {
+      border-bottom: 1px solid #f3f3f3;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .timeGraph {
+      padding: 1rem;
+    }
+
+    .pieGraph {
+      padding: 1rem;
+    }
+
+    .barGraph {
+      padding: 1rem;
+    }
+
+    .histogramGraph {
+      padding: 1rem;
+    }
+  }
+}
+
+/* .circularGraphs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.5rem;
+} */
+.circularGraphs {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(450px, 1fr)
+  ); /* Adjust the min and max values based on your content */
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .circularGraphs {
+    grid-template-columns: 1fr;
+  }
+}
